@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
+
 import {
   Form,
   FormControl,
@@ -18,11 +18,14 @@ import { loginSchema } from "@/schemas/forms/auth";
 import { Eye, EyeOff } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useLogin } from "@/hooks/auth/use-login";
-
+import CustomButton from '../buttons/custom-button';
+import { User, useUserStore } from "@/store/user-store";
 
 export function FormLogin() {
-  const router = useRouter();
   const { mutate, isPending } = useLogin();
+  const setUser = useUserStore(state => state.setUser)
+  const clearUser = useUserStore(state => state.clearUser)
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -36,8 +39,20 @@ export function FormLogin() {
 
   function onSubmit(values: z.infer<typeof loginSchema>) {
     mutate(values, {
-      onSuccess: () => {
+      onSuccess: (data) => {
+        const userLogged: User = {
+          id: Date.now().toString(),
+          email: values.email,
+          name: "User de Prueba",
+          role: "ADMIN",
+          token: data.token
+        }
+
+        setUser(userLogged)
         router.push("/dashboard/home");
+      },
+      onError: () => {
+        form.setError("root", { message: "Credenciales inválidas" });
       },
     });
   }
@@ -92,10 +107,18 @@ export function FormLogin() {
             </FormItem>
           )}
         />
+        <div className="w-full  flex justify-center items-center">
+          {/* Botón */}
 
-        <Button type="submit" className="w-full" disabled={isPending}>
-          {isPending ? "Ingresando..." : "Ingresar"}
-        </Button>
+          <CustomButton className="w-1/2 lg:w-full flex justify-center" type="submit" loading={isPending}> Inicias Sesion </CustomButton>
+        </div>
+
+        {/* Error general (credenciales inválidas) */}
+        {form.formState.errors.root && (
+          <p className="text-sm text-red-500 text-center">
+            {form.formState.errors.root.message}
+          </p>
+        )}
       </form>
     </Form>
   );

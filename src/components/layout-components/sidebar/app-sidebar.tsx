@@ -1,5 +1,5 @@
 "use client"
-import {  ChartLine,  Home,  LogOut,  Settings, SquareChartGantt, User2, UserRoundCheck, Users } from "lucide-react"
+import {  LogOut, Settings,  User2 } from "lucide-react"
 
 import {
   Sidebar,
@@ -15,47 +15,19 @@ import {
 import { Button } from "@/components/ui/button"
 import Link from "next/link";
 import { useLocation } from "@/hooks/use-loaction";
+import Image from "next/image";
+import { useUserStore } from "@/store/user-store";
+import {  itemsSidebar } from "@/const/sidebar-links";
 
 
-// Menu items.
-const items = [
-  {
-    title: "Home",
-    url: "/dashboard/home",
-    icon: Home,
-  },
-  {
-    title: "Usuarios",
-    url: "/dashboard/users",
-    icon: Users,
-  },
-  {
-    title: "Asistencia",
-    url: "/dashboard/attendance",
-    icon: UserRoundCheck,
-  },
-  {
-    title: "Estadisticas",
-    url: "/dashboard/stats",
-    icon: ChartLine,
-  },
-  {
-    title: "Inventario",
-    url: "/dashboard/inventary",
-    icon: SquareChartGantt,
-  },
-  // {
-  //   title: "Search",
-  //   url: "#",
-  //   icon: Search,
-  // },
 
-]
 
 export function AppSidebar() {
   const { determineLocation } = useLocation();
+  const clearUser = useUserStore(state => state.clearUser)
   const handleLogout = () => {
-    // Aquí ponés tu lógica para cerrar sesión
+
+    clearUser()
     console.log("Cerrando sesión...")
   }
   return (
@@ -63,10 +35,12 @@ export function AppSidebar() {
       <SidebarContent className="flex flex-col h-full">
         <SidebarGroup>
           <div>
-            <img
-              src="/gym.png"
+            <Image
+              src="/gym/gym.png"
               alt="Logo"
-              className="w-1/3 lg:w-1/2 rounded-full mx-auto"
+              className="rounded-full mx-auto"
+              width={100}
+              height={100}
             />
           </div>
 
@@ -74,7 +48,7 @@ export function AppSidebar() {
 
           <SidebarGroupContent>
             <SidebarMenu className="flex flex-col gap-3">
-              {items.map((item) => {
+              {itemsSidebar.map((item) => {
                 const isActive = determineLocation(item.url)
 
                 return (
