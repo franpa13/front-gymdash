@@ -12,13 +12,13 @@ export const useLocation = () => {
   const pathname = usePathname();
 
   const generateBreadcrumbs = (): BreadcrumbItem[] => {
-    const breadcrumbs: BreadcrumbItem[] = [{ label: 'Dashboard', href: '/' }];
+    const breadcrumbs: BreadcrumbItem[] = [{ label: 'Dashboard', href: '/dashboard/home' }];
 
     if (pathname === '/') {
       return breadcrumbs;
     }
 
-    const matchedItem = itemsSidebar.find(item => 
+    const matchedItem = itemsSidebar.find(item =>
       pathname === item.url || pathname.startsWith(item.url + '/')
     );
 
@@ -31,10 +31,10 @@ export const useLocation = () => {
       if (pathname !== matchedItem.url) {
         const subPath = pathname.replace(matchedItem.url, '');
         const subSegments = subPath.split('/').filter(Boolean);
-        
+
         subSegments.forEach((segment, index) => {
           const href = `${matchedItem.url}/${subSegments.slice(0, index + 1).join('/')}`;
-          
+
           breadcrumbs.push({
             label: formatSegmentName(segment),
             href: index === subSegments.length - 1 ? undefined : href
@@ -45,7 +45,7 @@ export const useLocation = () => {
       const pathSegments = pathname.split('/').filter(Boolean);
       pathSegments.forEach((segment, index) => {
         const href = `/${pathSegments.slice(0, index + 1).join('/')}`;
-        
+
         breadcrumbs.push({
           label: formatSegmentName(segment),
           href: index === pathSegments.length - 1 ? undefined : href
@@ -74,8 +74,8 @@ export const useLocation = () => {
     return breadcrumbs[breadcrumbs.length - 1]?.label || 'Dashboard';
   };
 
-  return { 
-    pathname, 
+  return {
+    pathname,
     determineLocation,
     generateBreadcrumbs,
     getCurrentPageTitle

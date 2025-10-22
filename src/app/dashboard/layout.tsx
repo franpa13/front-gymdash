@@ -9,6 +9,7 @@ import { useUserStore } from "@/store/user-store";
 import { Loader } from "@/components/ui/loader";
 import { LocationComponent } from '../../components/layout-components/location-component/location-component';
 import { useLocation } from "@/hooks/use-loaction";
+import { HeaderMobile } from '../../components/layout-components/header/header-mobile';
 
 
 export default function LayoutDashboard({
@@ -37,20 +38,27 @@ export default function LayoutDashboard({
     return (
         <SidebarProvider>
             <AppSidebar />
-            <main className="p-5">
-                <SidebarTrigger className="xl:hidden" />
+
+            <main className="w-full">
+                <HeaderMobile />
 
                 {/* Breadcrumbs automáticos */}
 
-                <LocationComponent items={breadcrumbItems} />
-    
 
+
+                <LocationComponent className="block md:hidden" items={breadcrumbItems} />
                 {isClient && user ? (
-                    children
+                    <section className="px-4 lg:px-20
+                    py-8">
+                        {children}
+                    </section>
+
                 ) : (
                     <Loader />
                 )}
                 {/* <Footer/> */}
+                {/* <Footer></Footer> */}
+
             </main>
         </SidebarProvider>
     );

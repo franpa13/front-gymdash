@@ -1,6 +1,9 @@
+import { CardHome } from '../../../components/home-components/card-home';
 
 export default function HomePage() {
     return (
-        <div>page</div>
+        <section className=''>
+            <CardHome />
+        </section>
     )
 }

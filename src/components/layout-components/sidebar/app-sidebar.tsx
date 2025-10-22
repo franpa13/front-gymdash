@@ -72,14 +72,14 @@ export function AppSidebar() {
 
         {/* Footer abajo */}
         <SidebarFooter className="mt-auto flex flex-col gap-2 px-2">
-          <Link href="/dashboard/profile">
+          <Link href="/dashboard/profile" className="hidden md:block">
             <Button variant="ghost" className="w-full justify-start gap-2">
               <User2 className="h-5 w-5" />
               Ver perfil
             </Button>
           </Link>
 
-          <Link href="/dashboard/settings">
+          <Link href="/dashboard/settings" className="hidden md:block">
             <Button variant="ghost" className="w-full justify-start gap-2">
               <Settings className="h-5 w-5" />
               Configuración
