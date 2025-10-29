@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Footer } from "@/components/layout-components/footer/footer";
 import { AppSidebar } from "@/components/layout-components/sidebar/app-sidebar";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import { useUserStore } from "@/store/user-store";
 import { Loader } from "@/components/ui/loader";
 import { LocationComponent } from '../../components/layout-components/location-component/location-component';
@@ -43,13 +43,10 @@ export default function LayoutDashboard({
                 <HeaderMobile />
 
                 {/* Breadcrumbs automáticos */}
-
-
-
                 <LocationComponent className="block md:hidden" items={breadcrumbItems} />
                 {isClient && user ? (
-                    <section className="px-4 lg:px-20
-                    py-8">
+                    <section className=" px-2 lg:px-8 
+                    py-3 lg:py-8">
                         {children}
                     </section>
 
@@ -57,7 +54,7 @@ export default function LayoutDashboard({
                     <Loader />
                 )}
                 {/* <Footer/> */}
-                {/* <Footer></Footer> */}
+
 
             </main>
         </SidebarProvider>

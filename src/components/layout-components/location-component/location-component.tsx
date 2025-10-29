@@ -17,7 +17,7 @@ interface BreadcrumbProps {
 
 export const LocationComponent: FC<BreadcrumbProps> = ({ items ,className}) => {
     return (
-        <nav className={`${className} w-full flex justify-start px-2 lg:px-6 mt-8 lg:mt-6 gap-3  my-2  items-center  text-sm text-gray-500`}>
+        <nav className={`${className} w-full flex justify-start px-2 lg:px-8 mt-4 lg:mt-6 gap-3  my-2  items-center  text-sm text-gray-500`}>
             {items.map((item, index) => (
                 <div key={index} className="flex items-center space-x-2">
                     {item.href ? (

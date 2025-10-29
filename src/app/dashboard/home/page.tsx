@@ -1,9 +1,12 @@
-import { CardHome } from '../../../components/home-components/card-home';
+import { GridCards } from '@/components/home-components/grid-cards';
+import { GridGraphs } from '@/components/home-components/grid-graphs';
+
 
 export default function HomePage() {
     return (
-        <section className=''>
-            <CardHome />
+        <section className='flex flex-col gap-6'>
+            <GridCards />
+            <GridGraphs />
         </section>
     )
 }

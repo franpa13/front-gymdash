@@ -1,5 +1,5 @@
 "use client"
-import {  LogOut, Settings,  User2 } from "lucide-react"
+import { LogOut, Settings, User2 } from "lucide-react"
 
 import {
   Sidebar,
@@ -17,7 +17,7 @@ import Link from "next/link";
 import { useLocation } from "@/hooks/use-loaction";
 import Image from "next/image";
 import { useUserStore } from "@/store/user-store";
-import {  itemsSidebar } from "@/const/sidebar-links";
+import { itemsSidebar } from "@/const/sidebar-links";
 
 
 
@@ -72,19 +72,6 @@ export function AppSidebar() {
 
         {/* Footer abajo */}
         <SidebarFooter className="mt-auto flex flex-col gap-2 px-2">
-          <Link href="/dashboard/profile" className="hidden md:block">
-            <Button variant="ghost" className="w-full justify-start gap-2">
-              <User2 className="h-5 w-5" />
-              Ver perfil
-            </Button>
-          </Link>
-
-          <Link href="/dashboard/settings" className="hidden md:block">
-            <Button variant="ghost" className="w-full justify-start gap-2">
-              <Settings className="h-5 w-5" />
-              Configuración
-            </Button>
-          </Link>
 
           <Button
             variant="ghost"
