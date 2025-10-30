@@ -33,13 +33,52 @@ export const GridGraphs = () => {
                         type: undefined
                     }
                 ]}
-                
+
                 footer={
                     <div className="flex gap-2 leading-none font-medium">
                         Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
                     </div>
                 }
             />
+            <CardGraph
+
+                title="Ingresos del ultimo año"
+                description="January - March 2024"
+                data={chartData}
+                chartType="bar"
+                series={[
+                    {
+                        dataKey: "desktop", label: "Desktop", color: "#2ca016",
+                        type: undefined
+                    }
+                ]}
+
+                footer={
+                    <div className="flex gap-2 leading-none font-medium">
+                        Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+                    </div>
+                }
+            />
+            <CardGraph
+
+                title="Ventas de productos del ultimo año"
+                description="January - March 2024"
+                data={chartData}
+                chartType="bar"
+                series={[
+                    {
+                        dataKey: "desktop", label: "Desktop", color: "#2ca016",
+                        type: undefined
+                    }
+                ]}
+
+                footer={
+                    <div className="flex gap-2 leading-none font-medium">
+                        Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+                    </div>
+                }
+            />
+
         </LayoutHome>
 
 
