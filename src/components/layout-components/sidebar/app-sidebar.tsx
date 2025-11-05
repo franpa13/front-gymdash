@@ -28,7 +28,7 @@ export function AppSidebar() {
   const handleLogout = () => {
 
     clearUser()
-    console.log("Cerrando sesión...")
+    
   }
   return (
     <Sidebar>

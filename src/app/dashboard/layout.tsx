@@ -46,14 +46,15 @@ export default function LayoutDashboard({
                 <LocationComponent className="block md:hidden" items={breadcrumbItems} />
                 {isClient && user ? (
                     <section className=" px-2 lg:px-8 
-                    py-3 lg:py-8">
+                    py-3 lg:pt-8">
                         {children}
+                        <Footer />
                     </section>
 
                 ) : (
                     <Loader />
                 )}
-                {/* <Footer/> */}
+
 
 
             </main>

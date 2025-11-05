@@ -9,9 +9,9 @@ export const OptionsUser = () => {
         <div className="flex items-center gap-2 py-1 px-2 lg:px-8 lg:py-1">
             {/* Iconos (notificaciones y configuración) */}
             <div className="flex items-center gap-2 text-muted-foreground">
-                <Bell className="w-5 h-5 sm:w-6 sm:h-6 cursor-pointer hover:text-foreground transition-colors" />
+                <Bell className="w-5 h-5  cursor-pointer hover:text-foreground transition-colors" />
                 <Separator orientation="vertical" className="h-5" />
-                <Settings className="w-5 h-5 sm:w-6 sm:h-6 cursor-pointer hover:text-foreground transition-colors" />
+                <Settings className="w-5 h-5  cursor-pointer hover:text-foreground transition-colors" />
             </div>
 
             {/* Separador */}

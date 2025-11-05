@@ -2,8 +2,7 @@
 
 import { ColumnDef } from "@tanstack/react-table"
 import Image from "next/image"
-import { Badge } from "@/components/ui/badge" // si usás shadcn/ui
-import { cn } from "@/lib/utils"
+import { Badge } from "@/components/ui/badge"
 
 export type User = {
     id: string
